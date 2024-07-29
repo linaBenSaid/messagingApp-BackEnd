@@ -1,4 +1,5 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Convo } from "src/convo/entity/convo.entity";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class User{
@@ -19,5 +20,11 @@ export class User{
 
     @CreateDateColumn()
     created_at: Date
+
+    @OneToMany(() => Convo, convo => convo.user1)
+    convosAsUser1: Convo[];
+
+    @OneToMany(() => Convo, convo => convo.user2)
+    convosAsUser2: Convo[] | string[];
 
 }
