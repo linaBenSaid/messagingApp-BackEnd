@@ -16,4 +16,11 @@ export class ConvoServiceService {
         return this.convoRepository.save(createConvoDto)
     }
     
+    async getUserConvos(userId: string){
+        return this.convoRepository.find({
+      where: { user1: { user_id: userId } },
+    //   relations: ['user1', 'user2', 'meessage'],
+      relations: ['user2'],
+    });
+    }
 }

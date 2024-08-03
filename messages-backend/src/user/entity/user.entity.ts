@@ -1,4 +1,5 @@
 import { Convo } from "src/convo/entity/convo.entity";
+import { Message } from "src/message/entity/message.entity";
 import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
@@ -20,6 +21,9 @@ export class User{
 
     @CreateDateColumn()
     created_at: Date
+
+    @OneToMany(() => Message, message => message.user_msg)
+    messages: Message[]
 
     @OneToMany(() => Convo, convo => convo.user1)
     convosAsUser1: Convo[];

@@ -8,10 +8,10 @@ export class Convo{
     @PrimaryGeneratedColumn()
     convo_id: string
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, user => user.convosAsUser1)
     user1: User | string
 
-    @ManyToOne(() => User)
+    @ManyToOne(() => User, user => user.convosAsUser2)
     user2: User | string
 
     @OneToMany(() => Message, (message) => message.convo)
